@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biztopiaのスケジュールについて</title>
+    <!-- 紙吹雪用ライブラリ -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+            transition: background-color 1.2s ease-in-out;
+        }
+
+        #dummy-screen {
+            display: block;
+            width: 90%;
+            max-width: 500px;
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-top: 5px solid #0052cc;
+        }
+        .notice-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #172b4d;
+            margin-bottom: 12px;
+            text-align: left;
+        }
+        .notice-meta {
+            font-size: 0.85rem;
+            color: #6b778c;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .notice-body {
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.6;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+        .btn-open {
+            background-color: #0052cc;
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        #baby-screen {
+            display: none;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            padding: 20px;
+        }
+        .name-title {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(255, 182, 193, 0.6);
+        }
+        .cheer-title {
+            font-size: 2.2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef, #ffdde1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+        }
+        .message {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            color: #fafdff;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="dummy-screen">
+        <div class="notice-title">【共有】Biztopia SNS運用スケジュール変更の件</div>
+        <div class="notice-meta">更新日: 2026年6月19日 | 担当: 運営事務局</div>
+        <div class="notice-body">
+            Biztopiaの今後のSNSスケジュール状況について変更が生じました。<br>
+            恐れ入りますが、以下のボタンより最新のスケジュールシートをご確認ください。
+        </div>
+        <button class="btn-open" onclick="revealSurprise()">スケジュールを確認する</button>
+    </div>
+
+    <div id="baby-screen">
+        <div class="name-title">山本さん</div>
+        <div class="cheer-title">✨ おつかれさまでした！ ✨</div>
+        <div class="message">
+            ドッキリでした（笑）<br><br>
+            これまで本当にありがとうございました！<br>
+            おからだおだいじに、<br>
+            げんきでおすごしください👶🍼
+        </div>
+    </div>
+
+    <script>
+        function revealSurprise() {
+            document.body.style.backgroundColor = "#1a2536";
+            document.getElementById('dummy-screen').style.display = 'none';
+            const babyScreen = document.getElementById('baby-screen');
+            babyScreen.style.display = 'block';
+            setTimeout(() => { babyScreen.style.opacity = '1'; }, 50);
+
+            const colors = ['#ffb6c1', '#ffa07a', '#ffe4e1', '#ffd700', '#ffffff'];
+            confetti({ particleCount: 150, spread: 90, origin: { y: 0.6 }, colors: colors });
+            setTimeout(() => {
+                confetti({ particleCount: 100, angle: 60, spread: 60, origin: { x: 0, y: 0.8 }, colors: colors });
+                confetti({ particleCount: 100, angle: 120, spread: 60, origin: { x: 1, y: 0.8 }, colors: colors });
+            }, 350);
+        }
+    </script>
+</body>
+</html>
